@@ -4,7 +4,7 @@
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 const navLinks = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
+const sections = document.querySelectorAll(".section-block");
 
 // Sidebar Toggle (Mobile)
 if(sidebarBtn) {
@@ -17,31 +17,30 @@ if(sidebarBtn) {
   });
 }
 
-// Navigation & Tab Switching
-for (let i = 0; i < navLinks.length; i++) {
-  navLinks[i].addEventListener("click", function () {
-    let lowerNavText = this.innerHTML.toLowerCase();
-    
-    for (let j = 0; j < pages.length; j++) {
-      if (lowerNavText === pages[j].dataset.page) {
-        pages[j].classList.add("active");
-        navLinks[i].classList.add("active");
-        window.scrollTo(0, 0); // scroll to top on tab change
-      } else {
-        pages[j].classList.remove("active");
-        // find nav link matching this page and remove active
-        navLinks.forEach(link => {
-          if(link.innerHTML.toLowerCase() === pages[j].dataset.page) {
-            link.classList.remove("active");
-          }
-        });
-      }
+// Scroll Spy for Navbar
+const observerOptions = {
+  root: null,
+  rootMargin: "-20% 0px -70% 0px", // Adjust these to trigger earlier/later
+  threshold: 0
+};
+
+const observerCallback = (entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Find corresponding nav link
+      const id = entry.target.id;
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${id}`) {
+          link.classList.add('active');
+        }
+      });
     }
-    
-    // reset intersection observer on new tab content
-    setTimeout(initScrollReveal, 50);
   });
-}
+};
+
+const scrollSpyObserver = new IntersectionObserver(observerCallback, observerOptions);
+sections.forEach(section => scrollSpyObserver.observe(section));
 
 // Project Filtering
 const filterBtns = document.querySelectorAll("[data-filter-btn]");
@@ -83,7 +82,7 @@ if(document.body.contains(form)) {
   }
 }
 
-// Scroll Reveal via Intersection Observer
+// Scroll Reveal Arrays
 function initScrollReveal() {
   const revealElements = document.querySelectorAll('.scroll-reveal');
   
@@ -97,15 +96,13 @@ function initScrollReveal() {
 
   const revealOptions = {
     root: null,
-    threshold: 0.15,
+    threshold: 0.1,
     rootMargin: "0px 0px -50px 0px"
   };
 
   const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
 
   revealElements.forEach(el => {
-    // remove first to allow re-triggering if needed
-    el.classList.remove('visible');
     revealObserver.observe(el);
   });
 }
