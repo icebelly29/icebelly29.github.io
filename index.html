@@ -1,508 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nikhil Nair | SWE & Maker</title>
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="./assets/images/meow.svg" type="image/x-icon">
-
-  <!-- Custom CSS -->
+  
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./assets/css/style.css">
-
-  <!-- Google Fonts -->
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
-<body class="pixel-cyber-theme">
-
-  <!-- Noise Overlay for Premium Feel -->
+<body class="fantik-theme">
+  <!-- Dynamic Backgrounds -->
   <div class="noise-overlay"></div>
+  <div class="scanlines"></div>
+  <canvas id="canvas-bg"></canvas>
 
-  <main>
-    <!--
-      - #SIDEBAR
-    -->
-    <aside class="sidebar glass-panel" data-sidebar>
-      <div class="sidebar-info">
-        <figure class="avatar-box pixelated-border">
-          <img src="./assets/images/myavatar.png" alt="Nikhil Nair" width="80">
-        </figure>
+  <!-- HUD NAVIGATION -->
+  <header class="hud-header">
+    <a href="#start" class="hud-logo pixel-font red-link">NN</a>
+    <nav class="hud-nav">
+      <a href="#start" class="nav-link active" data-nav-link>[ START ]</a>
+      <a href="#stats" class="nav-link" data-nav-link>[ STATS ]</a>
+      <a href="#quests" class="nav-link" data-nav-link>[ QUESTS ]</a>
+      <a href="#logs" class="nav-link" data-nav-link>[ LOGS ]</a>
+      <a href="#contact" class="nav-link" data-nav-link>[ PING ]</a>
+    </nav>
+  </header>
 
-        <div class="info-content">
-          <h1 class="name pixel-font" title="Nikhil Nair">Nikhil Nair</h1>
-          <p class="title cyber-text">Technology Fellow @ FabLab</p>
-          <div class="status-indicator">
-            <span class="pulse-dot"></span> Available for Tinkering
+  <main class="single-column-layout">
+    
+    <!-- Hero / Start -->
+    <section id="start" class="section-block hero-section scroll-reveal" data-page="start">
+      <div class="hero-container">
+        <div class="hero-content">
+          <p class="hero-subtitle pixel-font">{ Software Engineer / Maker ® }</p>
+          <h1 class="hero-title pixel-font typing-text">Nikhil Nair</h1>
+          <div class="hero-desc">
+            <p>I operate at the intersection of bits and atoms—passionate about AI/ML, Web Development, Embedded Systems, and design-led Tinkering. I currently work in a FabLab.</p>
+            <p>Based in <span class="tooltip-trigger">Kochi<span class="tooltip-window term-window"><span class="term-header"><span class="term-btn red"></span><span class="term-btn yellow"></span><span class="term-btn green"></span><span class="term-title">[ INFO ]</span></span><span class="term-body pixel-font">> Current Location<br>> KL-07</span></span></span>. Lived in <span class="tooltip-trigger">Chennai<span class="tooltip-window term-window"><span class="term-header"><span class="term-btn red"></span><span class="term-btn yellow"></span><span class="term-btn green"></span><span class="term-title">[ INFO ]</span></span><span class="term-body pixel-font">> TN-09</span></span></span>, <span class="tooltip-trigger">Delhi<span class="tooltip-window term-window"><span class="term-header"><span class="term-btn red"></span><span class="term-btn yellow"></span><span class="term-btn green"></span><span class="term-title">[ INFO ]</span></span><span class="term-body pixel-font">> DL</span></span></span>, <span class="tooltip-trigger">Mumbai<span class="tooltip-window term-window"><span class="term-header"><span class="term-btn red"></span><span class="term-btn yellow"></span><span class="term-btn green"></span><span class="term-title">[ INFO ]</span></span><span class="term-body pixel-font">> MH-01</span></span></span>. <b><span class="tooltip-trigger">F1<span class="tooltip-window term-window"><span class="term-header"><span class="term-btn red"></span><span class="term-btn yellow"></span><span class="term-btn green"></span><span class="term-title">[ RACING ]</span></span><span class="term-body pixel-font">> Supported Teams:<br><span style="color:#00D2BE">> Mercedes-AMG</span><br><span style="color:#00A0ED">> Williams Racing</span></span></span></span></b> fan, <b><span class="tooltip-trigger">runner<span class="tooltip-window term-window"><span class="term-header"><span class="term-btn red"></span><span class="term-btn yellow"></span><span class="term-btn green"></span><span class="term-title">[ STRAVA ]</span></span><span class="term-body pixel-font"><a href="https://www.strava.com/athletes/76671416" target="_blank" style="color:#FC4C02; text-decoration:none;">> View Profile</a></span></span></span></b>, <b>gym-goer</b>, and <b><span class="tooltip-trigger">cat<span class="tooltip-window term-window"><span class="term-header"><span class="term-btn red"></span><span class="term-btn yellow"></span><span class="term-btn green"></span><span class="term-title">[ FELINE_DATA ]</span></span><span class="term-body pixel-font">> Identity: Cat<br><img src="assets/images/cat.jpeg" class="tooltip-img" alt="Cat photo"></span></span></span></b> enthusiast.</p>
+          </div>
+          <div class="hero-status pixel-font" onclick="rebootTerminals()" style="cursor: pointer;" title="System Reboot">
+            <span class="status-dot"></span> Available for Tinkering
           </div>
         </div>
-
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Info</span>
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-      </div>
-
-      <div class="sidebar-info_more">
-        <div class="separator"></div>
-
-        <ul class="contacts-list">
-          <div style="text-align: center; margin-bottom: 20px;">
-            <a href="./assets/files/Nikhil_Nair_Resume.pdf" download class="resume-btn pixel-btn">
-              <ion-icon name="download-outline"></ion-icon>
-              <span>Download Resume</span>
-            </a>
+        
+        <div class="hero-graphic multi-term">
+          <!-- Terminal 1: System Boot -->
+          <div class="terminal-widget term-window term-sys magnetic-hover">
+            <div class="term-header">
+              <span class="term-btn red" onclick="closeTerminal(this)"></span><span class="term-btn yellow"></span><span class="term-btn green"></span>
+              <span class="term-title">[ SYSTEM_BOOT ]</span>
+            </div>
+            <div class="term-body pixel-font">
+              <p class="term-line">> Booting kernel...</p>
+              <div class="sys-stream" id="sys-stream"></div>
+            </div>
           </div>
 
-          <li class="contact-item">
-            <div class="icon-box neon-glow">
-              <ion-icon name="mail-outline"></ion-icon>
+          <!-- Terminal 3: Compiler -->
+          <div class="terminal-widget term-window term-compile magnetic-hover">
+            <div class="term-header">
+              <span class="term-btn red" onclick="closeTerminal(this)"></span><span class="term-btn yellow"></span><span class="term-btn green"></span>
+              <span class="term-title">[ MAKE_BUILD ]</span>
             </div>
-            <div class="contact-info">
-              <p class="contact-title pixel-subtitle">Email</p>
-              <a href="mailto:bettercallnikhilnair@gmail.com" class="contact-link">bettercallnikhilnair[at]gmail.com</a>
+            <div class="term-body pixel-font">
+              <p class="term-line">> Running make all...</p>
+              <div class="compile-stream" id="compile-stream"></div>
             </div>
-          </li>
+          </div>
 
-          <li class="contact-item">
-            <div class="icon-box neon-glow">
-              <ion-icon name="location-outline"></ion-icon>
+          <!-- Terminal 4: Arduino -->
+          <div class="terminal-widget term-window term-arduino magnetic-hover">
+            <div class="term-header">
+              <span class="term-btn red" onclick="closeTerminal(this)"></span><span class="term-btn yellow"></span><span class="term-btn green"></span>
+              <span class="term-title">[ PORT_COM3 ]</span>
             </div>
-            <div class="contact-info">
-              <p class="contact-title pixel-subtitle">Home Base</p>
-              <address>Kochi, KL, India</address>
-              <p class="journey-text">Lived: Chennai · Delhi · Mumbai</p>
+            <div class="term-body pixel-font">
+              <p class="term-line">> Serial.begin(115200)...</p>
+              <div class="arduino-stream" id="arduino-stream"></div>
             </div>
-          </li>
-        </ul>
+          </div>
 
-        <div class="separator"></div>
+          <!-- Terminal 5: Data Stream -->
+          <div class="terminal-widget term-window term-matrix magnetic-hover">
+            <div class="term-header">
+              <span class="term-btn red" onclick="closeTerminal(this)"></span><span class="term-btn yellow"></span><span class="term-btn green"></span>
+              <span class="term-title">[ DECRYPT_DATA ]</span>
+            </div>
+            <div class="term-body pixel-font">
+              <p class="term-line">> Fetching keystore...</p>
+              <div class="matrix-stream" id="matrix-stream"></div>
+            </div>
+          </div>
 
-        <ul class="social-list">
-          <li class="social-item"><a href="https://github.com/icebelly29" target="_blank" class="social-link"><ion-icon name="logo-github"></ion-icon></a></li>
-          <li class="social-item"><a href="https://www.linkedin.com/in/nikhilnair29/" target="_blank" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-          <li class="social-item"><a href="https://www.instagram.com/nikhilvb2/" target="_blank" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
-          <li class="social-item"><a href="#" class="social-link"><img src="./assets/images/meow.png" width="16" alt="cat"></a></li>
-        </ul>
+          <!-- Terminal 6: AI Agent -->
+          <div class="terminal-widget term-window term-ai magnetic-hover">
+            <div class="term-header">
+              <span class="term-btn red" onclick="closeTerminal(this)"></span><span class="term-btn yellow"></span><span class="term-btn green"></span>
+              <span class="term-title">[ GEMINI_LLM_AGENT ]</span>
+            </div>
+            <div class="term-body pixel-font">
+              <p class="term-line">> Connect generic AI API...</p>
+              <div class="ai-stream" id="ai-stream"></div>
+            </div>
+          </div>
+
+          <!-- Terminal 2: ASCII Pill (Interests) -->
+          <div class="terminal-widget term-window term-pill magnetic-hover">
+            <div class="term-header">
+              <span class="term-btn red" onclick="denyPillClose(this)"></span><span class="term-btn yellow"></span><span class="term-btn green"></span>
+              <span class="term-title">[ ROOT_ACCESS ]</span>
+            </div>
+            <div class="term-body">
+              <div class="ascii-pill-container" id="ascii-container">
+                <div class="ascii-pill" id="ascii-pill">
+                  <div class="pill-half top-half">
+                    <pre>
+   ▄▄████▄▄   
+ ▄██████████▄ 
+ ████████████ 
+ ████████████ 
+ ████████████ </pre>
+                  </div>
+                  <div class="pill-content pixel-font">
+                    <ul>
+                      <li>> AI/ML</li>
+                      <li>> Web Dev</li>
+                      <li>> Embedded</li>
+                      <li>> F1 Racing</li>
+                      <li>> Running</li>
+                      <li>> Weights</li>
+                    </ul>
+                  </div>
+                  <div class="pill-half bottom-half">
+                    <pre>
+ ░░░░░░░░░░░░ 
+ ░░░░░░░░░░░░ 
+ ░░░░░░░░░░░░ 
+ ▀░░░░░░░░░░▀ 
+   ▀▀░░░░▀▀   </pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </aside>
+    </section>
 
-    <!--
-      - #MAIN CONTENT
-    -->
-    <div class="main-content">
+    <!-- Stats -->
+    <section id="stats" class="section-block" data-page="stats">
+      <h2 class="section-title pixel-font scroll-reveal">[ Stats_&_XP ]</h2>
       
-      <!--
-        - #NAVBAR
-      -->
-      <nav class="navbar glass-panel">
-        <ul class="navbar-list">
-          <li class="navbar-item"><a href="#start" class="navbar-link active pixel-hover" data-nav-link>Start</a></li>
-          <li class="navbar-item"><a href="#stats" class="navbar-link pixel-hover" data-nav-link>Stats</a></li>
-          <li class="navbar-item"><a href="#quests" class="navbar-link pixel-hover" data-nav-link>Quests</a></li>
-          <li class="navbar-item"><a href="#logs" class="navbar-link pixel-hover" data-nav-link>Logs</a></li> 
-          <li class="navbar-item"><a href="#ping" class="navbar-link pixel-hover" data-nav-link>Ping</a></li>
-        </ul>
-      </nav>
-
-      <!--
-        - #ABOUT (Start)
-      -->
-      <article id="start" class="about glass-panel section-block" data-page="start">
-        <header>
-          <h2 class="h2 article-title pixel-font cyber-glitch" data-text="Player_1">Player_1</h2>
-        </header>
-
-        <section class="about-text scroll-reveal">
-          <p>
-            Hey there, I'm Nikhil Nair, a Computer Science Engineering graduate specializing in Cyber Physical Systems. 
-            I operate at the intersection of bits and atoms—passionate about AI/ML, Web Development, Embedded Systems, and design-led Tinkering. I currently work in a FabLab, turning creative ideas into working physical and digital tech.
-          </p>
-          <p>
-            When I'm not writing clean code or soldering components, I'm an avid fan of <b>F1</b> racing, running outdoors, hitting the <b>gym</b>, hanging out with <b>cats</b>, and leveling up my languages on Duolingo. My journey has spanned across Kochi, Chennai, Delhi, and Mumbai, giving me a diverse perspective on life and tech.
-          </p>
-        </section>
-
-        <section class="service scroll-reveal">
-          <h3 class="h3 service-title pixel-font">Skill_Tree</h3>
-          <ul class="service-list">
-            <li class="service-item glass-card hover-glow">
-              <div class="service-icon-box"><img src="./assets/images/machine-learning.png" alt="AI" width="40"></div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title gradient-text">AI & ML</h4>
-                <p class="service-item-text">Deep learning, CV, and intelligent systems.</p>
-              </div>
-            </li>
-            <li class="service-item glass-card hover-glow">
-              <div class="service-icon-box"><img src="./assets/images/development.png" alt="Web Dev" width="40"></div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title gradient-text">Web & App Dev</h4>
-                <p class="service-item-text">Building dynamic, responsive, and awwwards-worthy interfaces.</p>
-              </div>
-            </li>
-            <li class="service-item glass-card hover-glow">
-              <div class="service-icon-box"><ion-icon name="hardware-chip-outline" style="font-size: 40px; color: var(--neon-cyan);"></ion-icon></div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title gradient-text">Embedded / FabLab</h4>
-                <p class="service-item-text">Tinkering with hardware, IoT, and digital fabrication.</p>
-              </div>
-            </li>
-            <li class="service-item glass-card hover-glow">
-              <div class="service-icon-box"><img src="./assets/images/web-design.png" alt="Design" width="40"></div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title gradient-text">Design & Pixel Art</h4>
-                <p class="service-item-text">Creating visually stunning aesthetics and hybrid experiences.</p>
-              </div>
-            </li>
-          </ul>
-        </section>
-      </article>
-
-      <div class="section-divider pixel-divider"></div>
-
-      <!--
-        - #RESUME (Stats)
-      -->
-      <article id="stats" class="resume glass-panel section-block" data-page="stats">
-        <header>
-          <h2 class="h2 article-title pixel-font neon-text">Stats_&_XP</h2>
-        </header>
-
-        <section class="timeline scroll-reveal">
-          <div class="title-wrapper">
-            <div class="icon-box neon-glow"><ion-icon name="briefcase-outline"></ion-icon></div>
-            <h3 class="h3 pixel-font" style="font-size: 1rem;">Experience</h3>
-          </div>
-          <ol class="timeline-list">
+      <div class="bento-grid">
+        <!-- Experience -->
+        <div class="bento-card scroll-reveal">
+          <h3 class="bento-title pixel-font">[ Experience ]</h3>
+          <ul class="timeline-list">
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">Technology Fellow</h4>
-              <a href="https://fablabkerala.in/" target="_blank" class="cyber-link">Super FabLab - MIT CBA & KSUM</a>
-              <span class="time-badge synth-bg">Nov 2025 - Present</span>
-              <p class="timeline-text">Spearheading innovative projects in AI, IoT, and Embedded Systems, driving technological advancements and fostering a culture of creativity and tinkering.</p>
+              <a href="https://fablabkerala.in/" target="_blank" class="red-link">Super FabLab - MIT CBA & KSUM</a>
+              <span class="time-badge">Nov 2025 - Present</span>
+              <p class="timeline-text">Spearheading projects in AI, IoT, and Embedded Systems, fostering a culture of creativity and tinkering.</p>
             </li>
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">TBU Intern (AI & Robotics)</h4>
-              <a href="https://tataelxsi.com/" target="_blank" class="cyber-link">TATA Elxsi</a>
-              <span class="time-badge synth-bg">Oct 2023 - Dec 2023</span>
-              <p class="timeline-text">Applied advanced techniques to project 3D point cloud data onto 2D images, detecting objects via Deep Learning. Used ROS for efficient communication.</p>
+              <a href="https://tataelxsi.com/" target="_blank" class="red-link">TATA Elxsi</a>
+              <span class="time-badge">Oct 2023 - Dec 2023</span>
+              <p class="timeline-text">Applied advanced techniques to project 3D point cloud data onto 2D images, detecting objects via Deep Learning. Used ROS.</p>
             </li>
-          </ol>
-        </section>
+          </ul>
+        </div>
 
-        <section class="timeline scroll-reveal">
-          <div class="title-wrapper">
-            <div class="icon-box neon-glow"><ion-icon name="book-outline"></ion-icon></div>
-            <h3 class="h3 pixel-font" style="font-size: 1rem;">Education</h3>
-          </div>
-          <ol class="timeline-list">
+        <!-- Education -->
+        <div class="bento-card scroll-reveal">
+          <h3 class="bento-title pixel-font">[ Education ]</h3>
+          <ul class="timeline-list">
             <li class="timeline-item">
               <h4 class="h4 timeline-item-title">Vellore Institute of Technology, Chennai</h4>
-              <span class="cyber-link">B.Tech CSE (Cyberphysical Systems)</span>
-              <span class="time-badge synth-bg">2021 — 2025</span>
+              <span class="red-link">B.Tech CSE (Cyberphysical Systems)</span>
+              <span class="time-badge">2021 — 2025</span>
               <p class="timeline-text">Graduated with specialization in bridging digital logic with physical hardware.</p>
             </li>
-          </ol>
-        </section>
+          </ul>
+        </div>
 
-        <section class="skill scroll-reveal">
-          <h3 class="h3 skills-title pixel-font" style="font-size: 1rem;">Power_Levels</h3>
-          <ul class="skills-list content-card glass-card">
+        <!-- Skills -->
+        <div class="bento-card scroll-reveal">
+          <h3 class="bento-title pixel-font">[ Power_Levels ]</h3>
+          <ul class="skills-list">
             <li class="skills-item">
               <div class="title-wrapper"><h5 class="h5">Frontend & Web</h5><data value="85">85%</data></div>
-              <div class="skill-progress-bg"><div class="skill-progress-fill neon-bar synth-gradient" style="width: 85%;"></div></div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill red-bar" style="width: 85%;"></div></div>
             </li>
             <li class="skills-item">
               <div class="title-wrapper"><h5 class="h5">Embedded & Tinkering</h5><data value="75">75%</data></div>
-              <div class="skill-progress-bg"><div class="skill-progress-fill neon-bar synth-gradient" style="width: 75%;"></div></div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill red-bar" style="width: 75%;"></div></div>
             </li>
             <li class="skills-item">
               <div class="title-wrapper"><h5 class="h5">AI / ML</h5><data value="70">70%</data></div>
-              <div class="skill-progress-bg"><div class="skill-progress-fill neon-bar synth-gradient" style="width: 70%;"></div></div>
+              <div class="skill-progress-bg"><div class="skill-progress-fill red-bar" style="width: 70%;"></div></div>
             </li>
           </ul>
-        </section>
-      </article>
+        </div>
+      </div>
+    </section>
 
-      <div class="section-divider pixel-divider"></div>
+    <!-- Quests -->
+    <section id="quests" class="section-block" data-page="quests">
+      <h2 class="section-title pixel-font scroll-reveal">[ Quests_Log ]</h2>
+      
+      <ul class="filter-list pixel-font scroll-reveal">
+        <li class="filter-item"><button class="active filter-btn magnetic-btn" data-filter-btn>All</button></li>
+        <li class="filter-item"><button class="filter-btn magnetic-btn" data-filter-btn>AI</button></li>
+        <li class="filter-item"><button class="filter-btn magnetic-btn" data-filter-btn>Web Dev</button></li>
+        <li class="filter-item"><button class="filter-btn magnetic-btn" data-filter-btn>Embedded</button></li>
+      </ul>
 
-      <!--
-        - #PORTFOLIO (Quests)
-      -->
-      <article id="quests" class="portfolio glass-panel section-block" data-page="quests">
-        <header>
-          <h2 class="h2 article-title pixel-font neon-text" style="color: var(--neon-pink);">Quests_Log</h2>
-        </header>
+      <ul class="project-list">
+        <li class="project-item active scroll-reveal" data-filter-item data-category="embedded">
+          <a href="https://github.com/icebelly29/ttgo-infodash" target="_blank" class="quest-card magnetic-hover">
+            <figure class="pixel-image-wrapper"><img src="./assets/images/ttgo-infodash.gif" alt="TTGO InfoDash" loading="lazy"></figure>
+            <h3 class="project-title">TTGO InfoDash</h3>
+            <p class="project-category">[ Embedded ]</p>
+          </a>
+        </li>
+        <li class="project-item active scroll-reveal" data-filter-item data-category="ai">
+          <a href="https://github.com/icebelly29/Sentinel-Smart-ADAS-Integrated-Fleet-Monitoring-System" target="_blank" class="quest-card magnetic-hover">
+            <figure class="pixel-image-wrapper"><img src="./assets/images/sentinel.png" alt="Sentinel" loading="lazy"></figure>
+            <h3 class="project-title">Sentinel ADAS</h3>
+            <p class="project-category">[ AI ]</p>
+          </a>
+        </li>
+        <li class="project-item active scroll-reveal" data-filter-item data-category="web dev">
+          <a href="https://yoinkify.up.railway.app/" target="_blank" class="quest-card magnetic-hover">
+            <figure class="pixel-image-wrapper"><img src="./assets/images/yoinkify.png" alt="Yoinkify" loading="lazy"></figure>
+            <h3 class="project-title">Yoinkify</h3>
+            <p class="project-category">[ Web Dev ]</p>
+          </a>
+        </li>
+        <li class="project-item active scroll-reveal" data-filter-item data-category="web dev">
+          <a href="https://github.com/icebelly29/Leetcode-Connect" target="_blank" class="quest-card magnetic-hover">
+            <figure class="pixel-image-wrapper"><img src="./assets/images/leetcode-connect.png" alt="Leetcode Connect" loading="lazy"></figure>
+            <h3 class="project-title">Leetcode Connect</h3>
+            <p class="project-category">[ Android Dev ]</p>
+          </a>
+        </li>
+        <li class="project-item active scroll-reveal" data-filter-item data-category="web dev">
+          <a href="https://icebelly29.github.io/smithereens/" target="_blank" class="quest-card magnetic-hover">
+            <figure class="pixel-image-wrapper"><img src="./assets/images/joji-mama.png" alt="Smithereens" loading="lazy"></figure>
+            <h3 class="project-title">Smithereens</h3>
+            <p class="project-category">[ Web Dev ]</p>
+          </a>
+        </li>
+        <li class="project-item active scroll-reveal" data-filter-item data-category="ai">
+          <a href="https://github.com/icebelly29/UniDump/blob/main/CompVis/GymTrainer.ipynb" target="_blank" class="quest-card magnetic-hover">
+            <figure class="pixel-image-wrapper"><img src="./assets/images/ai-gym.png" alt="AI Gym Trainer" loading="lazy"></figure>
+            <h3 class="project-title">AI Gym Trainer</h3>
+            <p class="project-category">[ AI ]</p>
+          </a>
+        </li>
+      </ul>
+    </section>
 
-        <section class="projects">
-          <ul class="filter-list pixel-filters">
-            <li class="filter-item"><button class="active synth-btn" data-filter-btn>All</button></li>
-            <li class="filter-item"><button class="synth-btn" data-filter-btn>AI</button></li>
-            <li class="filter-item"><button class="synth-btn" data-filter-btn>Web Dev</button></li>
-            <li class="filter-item"><button class="synth-btn" data-filter-btn>Embedded Systems</button></li>
-            <li class="filter-item"><button class="synth-btn" data-filter-btn>Web Design</button></li>
-            <li class="filter-item"><button class="synth-btn" data-filter-btn>Android Dev</button></li>
-          </ul>
-
-          <ul class="project-list">
-            <!-- Project 1 -->
-            <li class="project-item active scroll-reveal" data-filter-item data-category="embedded systems">
-              <a href="https://github.com/icebelly29/ttgo-infodash" target="_blank" class="glass-card quest-card synth-hover">
-                <figure class="project-img pixel-image-wrapper">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/ttgo-infodash.gif" alt="TTGO InfoDash" loading="lazy">
-                </figure>
-                <h3 class="project-title cyber-text gradient-text">TTGO InfoDash</h3>
-                <p class="project-category">Embedded Systems</p>
-              </a>
-            </li>
-
-            <!-- Project 2 -->
-            <li class="project-item active scroll-reveal" data-filter-item data-category="ai">
-              <a href="https://github.com/icebelly29/Sentinel-Smart-ADAS-Integrated-Fleet-Monitoring-System" target="_blank" class="glass-card quest-card synth-hover">
-                <figure class="project-img pixel-image-wrapper">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/sentinel.png" alt="Sentinel" loading="lazy">
-                </figure>
-                <h3 class="project-title cyber-text gradient-text">Sentinel ADAS</h3>
-                <p class="project-category">AI</p>
-              </a>
-            </li>
-
-            <!-- Project 3 -->
-            <li class="project-item active scroll-reveal" data-filter-item data-category="web dev">
-              <a href="https://yoinkify.up.railway.app/" target="_blank" class="glass-card quest-card synth-hover">
-                <figure class="project-img pixel-image-wrapper">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/yoinkify.png" alt="Yoinkify" loading="lazy">
-                </figure>
-                <h3 class="project-title cyber-text gradient-text">Yoinkify</h3>
-                <p class="project-category">Web Dev</p>
-              </a>
-            </li>
-
-            <!-- Project 4 -->
-            <li class="project-item active scroll-reveal" data-filter-item data-category="android dev">
-              <a href="https://github.com/icebelly29/Leetcode-Connect" target="_blank" class="glass-card quest-card synth-hover">
-                <figure class="project-img pixel-image-wrapper">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/leetcode-connect.png" alt="Leetcode Connect" loading="lazy">
-                </figure>
-                <h3 class="project-title cyber-text gradient-text">Leetcode Connect</h3>
-                <p class="project-category">Android Dev</p>
-              </a>
-            </li>
-
-            <!-- Project 5 -->
-            <li class="project-item active scroll-reveal" data-filter-item data-category="web design">
-              <a href="https://www.linkedin.com/feed/update/urn:li:activity:7243298942078050304/" target="_blank" class="glass-card quest-card synth-hover">
-                <figure class="project-img pixel-image-wrapper">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/duolingo.png" alt="Duolingo Themed Resume" loading="lazy">
-                </figure>
-                <h3 class="project-title cyber-text gradient-text">Duolingo Resume</h3>
-                <p class="project-category">Web Design</p>
-              </a>
-            </li>
-
-            <!-- Project 6 -->
-            <li class="project-item active scroll-reveal" data-filter-item data-category="web dev">
-              <a href="https://github.com/icebelly29/Eureka" target="_blank" class="glass-card quest-card synth-hover">
-                <figure class="project-img pixel-image-wrapper">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/eureka.png" alt="Eureka!" loading="lazy">
-                </figure>
-                <h3 class="project-title cyber-text gradient-text">Eureka!</h3>
-                <p class="project-category">Web Dev</p>
-              </a>
-            </li>
-
-            <!-- Project 7 -->
-            <li class="project-item active scroll-reveal" data-filter-item data-category="web dev">
-              <a href="https://github.com/Krypthon-Hackathon-VITC/Team-50" target="_blank" class="glass-card quest-card synth-hover">
-                <figure class="project-img pixel-image-wrapper">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/artemis.png" alt="Artemis" loading="lazy">
-                </figure>
-                <h3 class="project-title cyber-text gradient-text">Artemis</h3>
-                <p class="project-category">Web Dev</p>
-              </a>
-            </li>
-
-            <!-- Project 8 -->
-            <li class="project-item active scroll-reveal" data-filter-item data-category="web dev">
-              <a href="https://icebelly29.github.io/smithereens/" target="_blank" class="glass-card quest-card synth-hover">
-                <figure class="project-img pixel-image-wrapper">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/joji-mama.png" alt="Smithereens" loading="lazy">
-                </figure>
-                <h3 class="project-title cyber-text gradient-text">Smithereens</h3>
-                <p class="project-category">Web Dev</p>
-              </a>
-            </li>
-
-            <!-- Project 9 -->
-            <li class="project-item active scroll-reveal" data-filter-item data-category="ai">
-              <a href="https://github.com/icebelly29/UniDump/blob/main/Car_Price/SecondHandCar_price_prediction_using_LRE.ipynb" target="_blank" class="glass-card quest-card synth-hover">
-                <figure class="project-img pixel-image-wrapper">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/car-price.png" alt="Used Car Price" loading="lazy">
-                </figure>
-                <h3 class="project-title cyber-text gradient-text">Used Car Predictor</h3>
-                <p class="project-category">AI</p>
-              </a>
-            </li>
-
-            <!-- Project 10 -->
-            <li class="project-item active scroll-reveal" data-filter-item data-category="web design">
-              <a href="#" class="glass-card quest-card synth-hover">
-                <figure class="project-img pixel-image-wrapper">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/yeumsig.png" alt="Yeumsig" loading="lazy">
-                </figure>
-                <h3 class="project-title cyber-text gradient-text">Yeumsig</h3>
-                <p class="project-category">Web Design</p>
-              </a>
-            </li>
-
-            <!-- Project 11 -->
-            <li class="project-item active scroll-reveal" data-filter-item data-category="ai">
-              <a href="https://github.com/icebelly29/UniDump/blob/main/CompVis/GymTrainer.ipynb" target="_blank" class="glass-card quest-card synth-hover">
-                <figure class="project-img pixel-image-wrapper">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/ai-gym.png" alt="AI Gym Trainer" loading="lazy">
-                </figure>
-                <h3 class="project-title cyber-text gradient-text">AI Gym Trainer</h3>
-                <p class="project-category">AI</p>
-              </a>
-            </li>
-
-            <!-- Project 12 -->
-            <li class="project-item active scroll-reveal" data-filter-item data-category="web dev">
-              <a href="#" class="glass-card quest-card synth-hover">
-                <figure class="project-img pixel-image-wrapper">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/nothing-weather.png" alt="Nothing Weather" loading="lazy">
-                </figure>
-                <h3 class="project-title cyber-text gradient-text">Nothing Weather</h3>
-                <p class="project-category">Web Dev</p>
-              </a>
-            </li>
-
-            <!-- Project 13 -->
-            <li class="project-item active scroll-reveal" data-filter-item data-category="web dev">
-              <a href="https://icebelly29.github.io/TTS-App/" target="_blank" class="glass-card quest-card synth-hover">
-                <figure class="project-img pixel-image-wrapper">
-                  <div class="project-item-icon-box"><ion-icon name="eye-outline"></ion-icon></div>
-                  <img src="./assets/images/tts-web.png" alt="Text to Speech" loading="lazy">
-                </figure>
-                <h3 class="project-title cyber-text gradient-text">Text to Speech</h3>
-                <p class="project-category">Web Dev</p>
-              </a>
-            </li>
-          </ul>
-        </section>
-      </article>
-
-      <div class="section-divider pixel-divider"></div>
-
-      <!--
-        - #BLOG (Logs)
-      -->
-      <article id="logs" class="blog glass-panel section-block" data-page="logs">
-        <header>
-          <h2 class="h2 article-title pixel-font neon-text" style="color: var(--synth-yellow);">System_Logs</h2>
-        </header>
-
-        <section class="blog-posts">
-          <ul class="blog-posts-list">
-            <li class="blog-post-item scroll-reveal">
-              <a href="https://chennai.vit.ac.in/computer-science-engineering-chennai/scope-patent/#:~:text=Tiwari%20Nikhil%20Nair-,202441051527,-A%20System%20To" target="_blank" class="glass-card synth-hover">
-                <figure class="blog-banner-box pixel-image-wrapper">
-                  <img src="./assets/images/patent.png" alt="Patent" loading="lazy">
-                </figure>
-                <div class="blog-content">
-                  <div class="blog-meta">
-                    <p class="blog-category cyber-tag">Patent</p>
-                    <span class="dot"></span>
-                    <time datetime="2024-07-12">July 12, 2024</time>
-                  </div>
-                  <h3 class="h3 blog-item-title">Patent got Published!!</h3>
-                  <p class="blog-text">A System to Recognize Number Plate and Allow Entry of a Vehicle.</p>
-                </div>
-              </a>
-            </li>
-            
-            <li class="blog-post-item scroll-reveal">
-              <a href="https://medium.com/@nikhilvb2" target="_blank" class="glass-card synth-hover">
-                <figure class="blog-banner-box pixel-image-wrapper">
-                  <img src="./assets/images/AI_license.gif" alt="License" loading="lazy">
-                </figure>
-                <div class="blog-content">
-                  <div class="blog-meta">
-                    <p class="blog-category cyber-tag">Medium</p>
-                    <span class="dot"></span>
-                    <time datetime="2024-03-05">Mar 05, 2024</time>
-                  </div>
-                  <h3 class="h3 blog-item-title">AI Licensing to Combat Deepfakes</h3>
-                  <p class="blog-text">Can AI Licensing Be the Solution to Combat Deepfakes and Foster Ethical AI Practices?</p>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </section>
-      </article>
-
-      <div class="section-divider pixel-divider"></div>
-
-      <!--
-        - #CONTACT (Ping)
-      -->
-      <article id="ping" class="contact glass-panel section-block" data-page="ping">
-        <header>
-          <h2 class="h2 article-title pixel-font neon-text" style="color: var(--neon-cyan);">Ping_Me</h2>
-        </header>
-
-        <section class="mapbox pixel-border-map scroll-reveal" data-mapbox>
-          <figure>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d251479.31652303843!2d75.9906121!3d9.9867342!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d514abec6bf%3A0xbd582caa5844192!2sKochi%2C%20Kerala!5e0!3m2!1sen!2sin!4v1748094858097!5m2!1sen!2sin"
-              width="400" height="300" loading="lazy"></iframe>
-          </figure>
-        </section>
-
-        <section class="contact-form scroll-reveal">
-          <h3 class="h3 form-title cyber-text gradient-text">Initiate Connection</h3>
-          <form action="https://formspree.io/f/xvoeplyz" method="POST" class="form" data-form>
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input cyber-input" placeholder="Alias / Name" required data-form-input>
-              <input type="email" name="email" class="form-input cyber-input" placeholder="Comms Channel (Email)" required data-form-input>
+    <!-- Logs -->
+    <section id="logs" class="section-block" data-page="logs">
+      <h2 class="section-title pixel-font scroll-reveal">[ System_Logs ]</h2>
+      <ul class="blog-posts-list">
+        <li class="blog-post-item scroll-reveal">
+          <a href="#" target="_blank" class="quest-card magnetic-hover">
+            <figure class="pixel-image-wrapper"><img src="./assets/images/patent.png" alt="Conference" loading="lazy" style="filter: hue-rotate(90deg);"></figure>
+            <div class="blog-content">
+              <div class="blog-meta"><p class="blog-category">[ Conference ]</p> <time datetime="2024-01-01">2024</time></div>
+              <h3 class="h3 blog-item-title">Insert Conference Paper Title Here</h3>
+              <p class="blog-text">Presented research at an international conference on Cyberphysical Systems / AI.</p>
             </div>
-            <textarea name="message" class="form-input cyber-input" placeholder="Transmission Data..." required data-form-input></textarea>
-            <button class="form-btn cyber-btn synth-btn-large" type="submit" disabled data-form-btn>
-              <ion-icon name="paper-plane"></ion-icon>
-              <span>Transmit</span>
-            </button>
-          </form>
-        </section>
-      </article>
+          </a>
+        </li>
+        <li class="blog-post-item scroll-reveal">
+          <a href="https://chennai.vit.ac.in/computer-science-engineering-chennai/scope-patent/#:~:text=Tiwari%20Nikhil%20Nair-,202441051527,-A%20System%20To" target="_blank" class="quest-card magnetic-hover">
+            <figure class="pixel-image-wrapper"><img src="./assets/images/patent.png" alt="Patent" loading="lazy"></figure>
+            <div class="blog-content">
+              <div class="blog-meta"><p class="blog-category">[ Patent ]</p> <time datetime="2024-07-12">July 12, 2024</time></div>
+              <h3 class="h3 blog-item-title">Patent published: Vehicle Entry System</h3>
+              <p class="blog-text">A System to Recognize Number Plate and Allow Entry of a Vehicle.</p>
+            </div>
+          </a>
+        </li>
+        <li class="blog-post-item scroll-reveal">
+          <a href="https://medium.com/@nikhilvb2" target="_blank" class="quest-card magnetic-hover">
+            <figure class="pixel-image-wrapper"><img src="./assets/images/AI_license.gif" alt="License" loading="lazy"></figure>
+            <div class="blog-content">
+              <div class="blog-meta"><p class="blog-category">[ Article ]</p> <time datetime="2024-03-05">March 5, 2024</time></div>
+              <h3 class="h3 blog-item-title">AI Licensing to Combat Deepfakes</h3>
+              <p class="blog-text">Can AI Licensing Be the Solution to Combat Deepfakes and Foster Ethical AI Practices?</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </section>
 
-    </div>
+    <!-- Contact -->
+    <section id="contact" class="section-block" data-page="contact">
+      <h2 class="section-title pixel-font scroll-reveal">[ Ping_Me ]</h2>
+      <section class="mapbox scroll-reveal" style="margin-bottom: 30px;">
+        <figure class="pixel-border-map" style="width: 100%; height: 250px; overflow: hidden; filter: grayscale(100%) invert(100%);">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125745.74836605068!2d76.22340321271108!3d9.9823679803023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d514abec6bf%3A0xbd582caa5844192!2sKochi%2C%20Kerala!5e0!3m2!1sen!2sin!4v1709420800000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </figure>
+      </section>
+      <div class="contact-grid scroll-reveal">
+        <form action="#" class="contact-form" data-form>
+          <div class="input-wrapper">
+            <input type="text" name="fullname" class="form-input pixel-font" placeholder="{ Name }" required data-form-input>
+            <input type="email" name="email" class="form-input pixel-font" placeholder="{ Email }" required data-form-input>
+          </div>
+          <textarea name="message" class="form-input pixel-font" placeholder="{ Transmission... }" required data-form-input></textarea>
+          <button class="form-btn pixel-font magnetic-btn" type="submit" disabled data-form-btn>
+            [ SEND ]
+          </button>
+        </form>
+      </div>
+    </section>
   </main>
 
-  <!-- Neko cursor -->
+  <!-- HUD FOOTER -->
+  <footer class="hud-footer">
+    <div class="socials">
+      <a href="https://github.com/icebelly29" target="_blank" class="pixel-font magnetic-btn">[ Github ]</a>
+      <a href="https://www.linkedin.com/in/nikhilnair29/" target="_blank" class="pixel-font magnetic-btn">[ LinkedIn ]</a>
+      <a href="https://www.instagram.com/nikhil_final.xlsx/" target="_blank" class="pixel-font magnetic-btn">[ Instagram ]</a>
+      <a href="./assets/files/Nikhil_Nair_Resume.pdf" target="_blank" class="pixel-font magnetic-btn">[ Resume ]</a>
+    </div>
+    <div class="copyright pixel-font">
+      &copy; 2026 Nikhil Nair
+    </div>
+  </footer>
+
+  <!-- Neko Cat integration -->
   <script src="./assets/js/oneko.js"></script>
-  
-  <!-- Custom JS -->
+  <!-- Custom JS with canvas logic -->
   <script src="./assets/js/script.js"></script>
-
-  <!-- Ionicon link -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
 </body>
 </html>
