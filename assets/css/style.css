@@ -684,24 +684,234 @@ textarea.form-input { min-height: 150px; resize: vertical; }
  * RESPONSIVENESS
  * ------------------------- */
 @media (max-width: 768px) {
-  .hud-header, .hud-footer { position: relative; padding: 20px; flex-direction: column; gap: 20px; text-align: center; }
-  .hud-nav { flex-wrap: wrap; justify-content: center; }
-  .hud-footer .socials { flex-direction: row; justify-content: center; }
-  .single-column-layout { padding-top: 50px; }
-  .input-wrapper { flex-direction: column; }
-  
+  :root {
+    --hud-padding: 10px;
+  }
+
+  body.space-theme {
+    overflow-x: hidden;
+  }
+
+  .hud-header {
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 10px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    pointer-events: auto;
+  }
+
+  .hud-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    font-size: 0.55rem;
+    padding: 0 10px;
+    width: 100%;
+  }
+
+  .hud-footer {
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 10px;
+    margin-top: 50px;
+    pointer-events: auto;
+  }
+
+  .hud-footer .socials {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .single-column-layout {
+    padding: 130px 10px 100px;
+    gap: 5vh;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    display: block; /* Ensure it takes width to prevent overflow */
+  }
+
+  /* Hero Section Mobile Fixes */
   .hero-container {
     flex-direction: column;
     text-align: center;
+    gap: 20px;
+    width: 100%;
   }
+
   .hero-content {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    width: 100%;
+    word-break: break-all;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    padding: 0 5px;
+    line-height: 1.6;
+    width: 100%;
+    overflow-wrap: break-word;
+  }
+
+  .hero-section {
+    height: auto !important;
+    min-height: unset !important;
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+
+  .hero-title {
+    font-size: 2.8rem;
+    line-height: 1.1;
+    margin-bottom: 25px;
     text-align: center;
   }
-  .hero-graphic {
+
+  /* Split title into two lines on mobile and force break */
+  .mobile-break {
+    display: block !important;
+    margin-top: 5px;
+    white-space: nowrap !important; /* Prevents "NAI" break */
     width: 100%;
-    max-width: 100%;
+  }
+
+  /* Multi-line typing cursor fix - specifically for concentrated span */
+  .typing-text {
+    display: inline-block !important; /* Changed to inline-block for better cursor alignment */
+  }
+  .typing-text::after {
+    display: inline-block;
+    vertical-align: baseline;
+    margin-left: 5px; /* Tighter next to R */
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    padding: 0 10px;
+    line-height: 1.6;
+    width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: normal;
+    text-align: center;
+  }
+
+  /* Centered Terminal Stack on Mobile */
+  .hero-graphic.multi-term {
+    position: relative;
+    height: 1200px;
+    width: 100%;
+    margin-top: 40px;
+    display: block;
+    overflow: visible;
+  }
+
+  .term-window {
+    position: absolute !important;
+    scale: 0.65;
+    transform-origin: center;
+    transition: all 0.3s ease;
+    left: 50% !important;
+    transform: translateX(-50%) !important; /* Forces centering without interfering with rotations inside */
+    pointer-events: auto;
+    filter: blur(1px) brightness(0.7); /* Background effect for others */
+  }
+
+  /* Specific Centered & Staggered Tops */
+  .term-sys { top: 30px; transform: translateX(-50%) rotate(-1deg) !important; z-index: 1; width: 280px; }
+  .term-compile { top: 90px; transform: translateX(-48%) rotate(2deg) !important; z-index: 2; width: 300px; }
+  .term-arduino { top: 260px; transform: translateX(-52%) rotate(-3deg) !important; z-index: 3; width: 260px; }
+  .term-matrix { top: 430px; transform: translateX(-47%) rotate(1deg) !important; z-index: 4; width: 280px; }
+  .term-ai { top: 620px; transform: translateX(-53%) rotate(-2deg) !important; z-index: 5; width: 300px; }
+  
+  .term-pill { 
+    top: 150px; 
+    transform: translateX(-50%) !important; 
+    z-index: 999; 
+    width: 320px; 
+    filter: none; 
+    scale: 0.72; 
+  }
+
+  .term-body {
+    height: auto !important;
+    min-height: 80px;
+    font-size: 0.55rem;
+    line-height: 1.4;
+    padding: 10px;
+  }
+
+  .term-pill .term-body {
+    min-height: 250px;
+  }
+
+  /* Stats & XP Fixes - RIGID SEPARATION */
+  #stats {
+    position: relative;
+    z-index: 10;
+    margin-top: 400px; /* Stronger separation */
+    padding-top: 50px;
+    background: var(--bg-color); 
+  }
+
+  .bento-grid {
     margin-top: 50px;
-    justify-content: center;
+  }
+  
+  .timeline-item {
+    padding-left: 15px;
+  }
+  .time-badge {
+    position: static;
+    margin-bottom: 5px;
+    font-size: 0.7rem;
+  }
+
+  /* Contact Fixes */
+  .input-wrapper {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .contact-form .form-btn {
+    width: 100%;
+  }
+
+  /* Bento Grid Adjust */
+  .bento-card {
+    padding-left: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.1rem;
+  }
+  .nav-link {
+    font-size: 0.5rem;
+    padding: 2px;
+  }
+  .nav-link::before {
+    display: none;
   }
 }

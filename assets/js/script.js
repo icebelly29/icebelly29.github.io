@@ -241,14 +241,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // -------------------------
   const asciiPill = document.getElementById('ascii-pill');
   if(asciiPill) {
-    window.addEventListener('scroll', () => {
-      // Open the pill if user scrolls down more than 50px
-      if(window.scrollY > 50) {
+    const handleScroll = () => {
+      // Threshold for mobile pill expansion - increased to 800px to keep it closed longer
+      const threshold = window.innerWidth <= 768 ? 800 : 50; 
+      const isScrolled = window.scrollY > threshold;
+      
+      if(isScrolled) {
         asciiPill.classList.add('open');
       } else {
         asciiPill.classList.remove('open');
       }
-    });
+    };
+    
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
   }
 
   const sysStream = document.getElementById('sys-stream');
