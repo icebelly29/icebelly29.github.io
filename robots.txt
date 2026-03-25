@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://icebelly29.github.io/sitemap.xml
