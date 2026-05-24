@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <title>Nikhil Nair | Software Engineer & Maker</title>
   <meta name="title" content="Nikhil Nair | Software Engineer & Maker">
-  <meta name="description" content="Portfolio of Nikhil Nair, a Software Engineer and Maker specializing in AI/ML, Embedded Systems, and Web Development. Technology Fellow at Super FabLab Kerala.">
-  <meta name="keywords" content="Nikhil Nair, Software Engineer, Embedded Systems, AI, ML, Robotics, Web Development, Kochi, Kerala, FabLab">
+  <meta name="description"
+    content="Portfolio of Nikhil Nair, a Software Engineer and Maker specializing in AI/ML, Embedded Systems, and Web Development. Technology Fellow at Super FabLab Kerala.">
+  <meta name="keywords"
+    content="Nikhil Nair, Software Engineer, Embedded Systems, AI, ML, Robotics, Web Development, Kochi, Kerala, FabLab">
   <meta name="author" content="Nikhil Nair">
   <link rel="canonical" href="https://icebelly29.github.io/">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://icebelly29.github.io/">
   <meta property="og:title" content="Nikhil Nair | Software Engineer & Maker">
-  <meta property="og:description" content="Exploring the intersection of bits and atoms through AI, Robotics, and Web Dev.">
+  <meta property="og:description"
+    content="Exploring the intersection of bits and atoms through AI, Robotics, and Web Dev.">
   <meta property="twitter:url" content="https://icebelly29.github.io/">
   <meta property="twitter:title" content="Nikhil Nair | Software Engineer & Maker">
-  <meta property="twitter:description" content="Technology Fellow at Super FabLab Kerala. Specialist in Embedded Systems and AI.">
+  <meta property="twitter:description"
+    content="Technology Fellow at Super FabLab Kerala. Specialist in Embedded Systems and AI.">
 
   <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="./assets/css/style.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
 
   <script type="application/ld+json">
     {
@@ -46,6 +53,7 @@
     }
   </script>
 </head>
+
 <body class="space-theme">
   <!-- Dynamic Backgrounds -->
   <div class="noise-overlay"></div>
@@ -104,7 +112,8 @@
                       class="term-header"><span class="term-btn red"></span><span class="term-btn yellow"></span><span
                         class="term-btn green"></span><span class="term-title">[ FELINE_DATA ]</span></span><span
                       class="term-body pixel-font">> Identity: Cat<br><img src="assets/images/cat.jpeg"
-                        class="tooltip-img" alt="Cat photo"></span></span></span></b> enthusiast.</p>
+                        class="tooltip-img" alt="Cat photo"></span></span></span></b> enthusiast.
+            </p>
           </div>
           <div class="hero-status pixel-font" onclick="rebootTerminals()" style="cursor: pointer;"
             title="System Reboot">
@@ -290,6 +299,14 @@
                 <div class="skill-progress-fill red-bar" style="width: 70%;"></div>
               </div>
             </li>
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Soft Skills (Yapping)</h5><data value="90">90%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill red-bar" style="width: 90%;"></div>
+              </div>
+            </li>
           </ul>
         </div>
       </div>
@@ -307,6 +324,30 @@
       </ul>
 
       <ul class="project-list">
+        <li class="project-item active scroll-reveal" data-filter-item data-category="embedded">
+          <a href="https://github.com/icebelly29/CutterProd" target="_blank" class="quest-card magnetic-hover">
+            <figure class="pixel-image-wrapper"><img src="./assets/images/cutterprod.jpg" alt="CutterProd G-Code"
+                loading="lazy"></figure>
+            <h3 class="project-title">UrumiCutter</h3>
+            <p class="project-category">[ Web Dev / Embedded ]</p>
+          </a>
+        </li>
+        <li class="project-item active scroll-reveal" data-filter-item data-category="ai">
+          <a href="https://github.com/icebelly29/UrumiCam" target="_blank" class="quest-card magnetic-hover">
+            <figure class="pixel-image-wrapper"><img src="./assets/images/urumicam.jpg" alt="UrumiCam Scanner"
+                loading="lazy"></figure>
+            <h3 class="project-title">UrumiCam Scanner</h3>
+            <p class="project-category">[ AI ]</p>
+          </a>
+        </li>
+        <li class="project-item active scroll-reveal" data-filter-item data-category="web dev">
+          <a href="https://github.com/icebelly29/Mini-Plotter" target="_blank" class="quest-card magnetic-hover">
+            <figure class="pixel-image-wrapper"><img src="./assets/images/mini-plotter-top.jpg" alt="MiniPlotter"
+                loading="lazy"></figure>
+            <h3 class="project-title">MiniPlotter</h3>
+            <p class="project-category">[ Web Dev / Embedded ]</p>
+          </a>
+        </li>
         <li class="project-item active scroll-reveal" data-filter-item data-category="embedded">
           <a href="https://github.com/icebelly29/ttgo-infodash" target="_blank" class="quest-card magnetic-hover">
             <figure class="pixel-image-wrapper"><img src="./assets/images/ttgo-infodash.gif" alt="TTGO InfoDash"
@@ -358,12 +399,80 @@
           </a>
         </li>
       </ul>
+
+      <!-- View More/Less Projects Button -->
+      <div class="view-more-container" id="project-view-more-container"
+        style="display: flex; justify-content: center; gap: 20px; margin-top: 40px;">
+        <button class="filter-btn magnetic-btn" id="project-view-more-btn">[ VIEW MORE ]</button>
+        <button class="filter-btn magnetic-btn" id="project-view-less-btn" style="display: none;">[ VIEW LESS ]</button>
+      </div>
     </section>
 
     <!-- Logs -->
     <section id="logs" class="section-block" data-page="logs">
       <h2 class="section-title pixel-font scroll-reveal">[ System_Logs ]</h2>
       <ul class="blog-posts-list">
+        <!-- <li class="blog-post-item scroll-reveal">
+          <a href="https://github.com/icebelly29/concrete-nas-bio-ht" target="_blank" class="quest-card magnetic-hover">
+            <figure class="pixel-image-wrapper"><img src="./assets/images/concrete_nas.png"
+                alt="Concrete Strength Prediction Research" loading="lazy">
+            </figure>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <p class="blog-category">[ Publication ]</p> <time datetime="2026-05-24">May 2026</time>
+              </div>
+              <h3 class="h3 blog-item-title">Neural Architecture Search & Bio-Inspired Optimization for Concrete
+                Strength Prediction</h3>
+              <p class="blog-text">Employing a dual-track parallel optimization strategy using NAS and bio-inspired
+                hyperparameter tuning (BIO-HT) for civil engineering forecasting.</p>
+            </div>
+          </a>
+        </li> -->
+        <li class="blog-post-item scroll-reveal">
+          <a href="https://projects.fablabkerala.in/mtm_projects/urumi/software.html" target="_blank"
+            class="quest-card magnetic-hover">
+            <figure class="pixel-image-wrapper"><img src="./assets/images/urumicam.jpg" alt="UrumiCam" loading="lazy">
+            </figure>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <p class="blog-category">[ Documentation ]</p> <time datetime="2026-05-19">May 19, 2026</time>
+              </div>
+              <h3 class="h3 blog-item-title">UrumiCam: Grid Scanning, Feature Matching & Canvas Trajectory Mapping</h3>
+              <p class="blog-text">Solving coordinate inversion, implementing real-time camera-feed alignment, and
+                stitching multi-gantry images for CNC calibration.</p>
+            </div>
+          </a>
+        </li>
+        <li class="blog-post-item scroll-reveal">
+          <a href="https://www.hackster.io/makerkootam/miniplotter-esp32-corexy-a4-pen-plotter-b6b7f0" target="_blank"
+            class="quest-card magnetic-hover">
+            <figure class="pixel-image-wrapper"><img src="./assets/images/mini-plotter-top.jpg" alt="Fab-Doc"
+                loading="lazy">
+            </figure>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <p class="blog-category">[ Hackster ]</p> <time datetime="2026-05-21">May 21, 2026</time>
+              </div>
+              <h3 class="h3 blog-item-title">Mini-Plotter Documentation</h3>
+              <p class="blog-text">Detailed documentation for the mini plotter on hackster.io</p>
+            </div>
+          </a>
+        </li>
+        <li class="blog-post-item scroll-reveal">
+          <a href="#" target="_blank" class="quest-card magnetic-hover">
+            <figure class="pixel-image-wrapper"><img src="./assets/images/conference-2.jpg" alt="Conference"
+                loading="lazy"></figure>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <p class="blog-category">[ Conference ]</p> <time datetime="2026-04-12">2026</time>
+              </div>
+              <h3 class="h3 blog-item-title">Harvesting Data: Blockchain, AI and Advanced Innovations in Agriculture,
+                Chapter 6</h3>
+              <p class="blog-text">Comprehensive Review of Blockchain-Oriented Methods in Agricultural Supply Chain
+                Management.</p>
+            </div>
+          </a>
+        </li>
         <li class="blog-post-item scroll-reveal">
           <a href="#" target="_blank" class="quest-card magnetic-hover">
             <figure class="pixel-image-wrapper"><img src="./assets/images/conference-1.png" alt="Conference"
@@ -408,6 +517,13 @@
           </a>
         </li>
       </ul>
+
+      <!-- View More/Less Logs Button -->
+      <div class="view-more-container" id="log-view-more-container"
+        style="display: flex; justify-content: center; gap: 20px; margin-top: 40px;">
+        <button class="filter-btn magnetic-btn" id="log-view-more-btn">[ VIEW MORE ]</button>
+        <button class="filter-btn magnetic-btn" id="log-view-less-btn" style="display: none;">[ VIEW LESS ]</button>
+      </div>
     </section>
 
     <!-- Contact -->

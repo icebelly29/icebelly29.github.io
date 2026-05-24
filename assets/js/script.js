@@ -181,31 +181,195 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // -------------------------
-  // 5. PROJECT FILTERING
+  // 5. PROJECT FILTERING & PAGINATION (VIEW MORE/LESS)
   // -------------------------
   const filterBtns = document.querySelectorAll('[data-filter-btn]');
-  const filterItems = document.querySelectorAll('[data-filter-item]');
+  const projectMoreBtn = document.getElementById('project-view-more-btn');
+  const projectLessBtn = document.getElementById('project-view-less-btn');
   
+  let projectsPage = 1;
+  const projectsPageSize = 6;
+  let currentProjectFilter = 'all';
+
+  function updateProjects(instant = false) {
+    const filterItems = document.querySelectorAll('[data-filter-item]');
+    const projectBtnContainer = document.getElementById('project-view-more-container');
+    
+    // 1. Get matching items
+    const matchingItems = [];
+    filterItems.forEach(item => {
+      if (currentProjectFilter === 'all' || item.dataset.category === currentProjectFilter) {
+        matchingItems.push(item);
+      } else {
+        // Not matching filter, hide immediately or with transition
+        item.classList.remove('active');
+        if (instant) {
+          item.classList.add('hide');
+        } else {
+          setTimeout(() => item.classList.add('hide'), 300);
+        }
+      }
+    });
+
+    // 2. Determine visibility based on expanded state
+    const limit = projectsPage * projectsPageSize;
+    const totalCount = matchingItems.length;
+
+    if (totalCount > projectsPageSize) {
+      if (projectBtnContainer) projectBtnContainer.style.display = 'flex';
+      
+      // Control More Button
+      if (limit < totalCount) {
+        if (projectMoreBtn) projectMoreBtn.style.display = 'inline-block';
+      } else {
+        if (projectMoreBtn) projectMoreBtn.style.display = 'none';
+      }
+      
+      // Control Less Button
+      if (projectsPage > 1) {
+        if (projectLessBtn) projectLessBtn.style.display = 'inline-block';
+      } else {
+        if (projectLessBtn) projectLessBtn.style.display = 'none';
+      }
+    } else {
+      if (projectBtnContainer) projectBtnContainer.style.display = 'none';
+    }
+
+    matchingItems.forEach((item, idx) => {
+      const shouldShow = idx < limit;
+      if (shouldShow) {
+        item.classList.remove('hide');
+        if (instant) {
+          item.classList.add('active');
+        } else {
+          setTimeout(() => item.classList.add('active'), 50);
+        }
+      } else {
+        item.classList.remove('active');
+        if (instant) {
+          item.classList.add('hide');
+        } else {
+          setTimeout(() => item.classList.add('hide'), 300);
+        }
+      }
+    });
+  }
+
+  // Initial call to hide projects exceeding the limit on load
+  updateProjects(true);
+
   filterBtns.forEach(btn => {
     btn.addEventListener('click', function() {
       // Set active button
       filterBtns.forEach(b => b.classList.remove('active'));
       this.classList.add('active');
       
-      const filterValue = this.innerText.toLowerCase();
+      currentProjectFilter = this.innerText.toLowerCase();
+      // Reset expansion when changing category for cleaner UX
+      projectsPage = 1;
       
-      filterItems.forEach(item => {
-        if(filterValue === 'all' || item.dataset.category === filterValue) {
-          item.classList.remove('hide');
-          // Add small delay to re-trigger animation
-          setTimeout(() => item.classList.add('active'), 50); 
-        } else {
-          item.classList.remove('active');
-          setTimeout(() => item.classList.add('hide'), 500); // Wait for transition
-        }
-      });
+      updateProjects(false);
     });
   });
+
+  if (projectMoreBtn) {
+    projectMoreBtn.addEventListener('click', () => {
+      projectsPage++;
+      updateProjects(false);
+    });
+  }
+
+  if (projectLessBtn) {
+    projectLessBtn.addEventListener('click', () => {
+      projectsPage = 1;
+      updateProjects(false);
+      
+      // Smoothly scroll back to the quests section header so the user isn't disoriented
+      const questsSection = document.getElementById('quests');
+      if (questsSection) {
+        questsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+
+  // -------------------------
+  // 5B. LOGS PAGINATION (VIEW MORE/LESS)
+  // -------------------------
+  const logMoreBtn = document.getElementById('log-view-more-btn');
+  const logLessBtn = document.getElementById('log-view-less-btn');
+  
+  let logsPage = 1;
+  const logsPageSize = 3;
+
+  function updateLogs(instant = false) {
+    const logItems = document.querySelectorAll('.blog-post-item');
+    const logBtnContainer = document.getElementById('log-view-more-container');
+    
+    const limit = logsPage * logsPageSize;
+    const totalCount = logItems.length;
+
+    if (totalCount > logsPageSize) {
+      if (logBtnContainer) logBtnContainer.style.display = 'flex';
+      
+      // Control More Button
+      if (limit < totalCount) {
+        if (logMoreBtn) logMoreBtn.style.display = 'inline-block';
+      } else {
+        if (logMoreBtn) logMoreBtn.style.display = 'none';
+      }
+      
+      // Control Less Button
+      if (logsPage > 1) {
+        if (logLessBtn) logLessBtn.style.display = 'inline-block';
+      } else {
+        if (logLessBtn) logLessBtn.style.display = 'none';
+      }
+    } else {
+      if (logBtnContainer) logBtnContainer.style.display = 'none';
+    }
+
+    logItems.forEach((item, idx) => {
+      const shouldShow = idx < limit;
+      if (shouldShow) {
+        item.classList.remove('hide');
+        if (instant) {
+          item.classList.add('active');
+        } else {
+          setTimeout(() => item.classList.add('active'), 50);
+        }
+      } else {
+        item.classList.remove('active');
+        if (instant) {
+          item.classList.add('hide');
+        } else {
+          setTimeout(() => item.classList.add('hide'), 300);
+        }
+      }
+    });
+  }
+
+  // Initial call to hide logs exceeding the limit on load
+  updateLogs(true);
+
+  if (logMoreBtn) {
+    logMoreBtn.addEventListener('click', () => {
+      logsPage++;
+      updateLogs(false);
+    });
+  }
+
+  if (logLessBtn) {
+    logLessBtn.addEventListener('click', () => {
+      logsPage = 1;
+      updateLogs(false);
+      
+      // Smoothly scroll back to the logs section header
+      const logsSection = document.getElementById('logs');
+      if (logsSection) {
+        logsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
 
   // -------------------------
   // 6. CONTACT FORM VALIDATION

@@ -641,6 +641,8 @@ ul { list-style: none; }
 .project-category { font-size: 0.8rem; color: var(--accent-red); font-family: var(--font-pixel); font-size: 0.5rem; letter-spacing: 1px;}
 
 .project-item.hide { display: none; }
+.blog-post-item.hide { display: none; }
+
 
 /* -------------------------
  * BLOGS & LOGS
